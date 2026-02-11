@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ContactForm from '../components/ContactForm.astro';
 import FeatureCard from '../components/FeatureCard.astro';
+import Newsletter from '../components/Newsletter.astro';
 
 const features = [
   {
@@ -115,17 +116,10 @@ const features = [
     </div>
   </section>
 
-  <!-- Newsletter Placeholder -->
+  <!-- Newsletter Section -->
   <section id="newsletter" class="bg-slate-50 py-24 dark:bg-slate-800">
     <div class="container mx-auto px-4">
-      <div class="mx-auto max-w-3xl text-center">
-        <h2 class="mb-4 text-4xl font-bold text-slate-900 dark:text-white">
-          Newsletter Coming Soon
-        </h2>
-        <p class="text-lg text-slate-600 dark:text-slate-400">
-          Newsletter signup form will be added in the next milestone.
-        </p>
-      </div>
+      <Newsletter />
     </div>
   </section>
 
