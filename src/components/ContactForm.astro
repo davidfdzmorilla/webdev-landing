@@ -1,0 +1,224 @@
+---
+
+---
+
+<div class="mx-auto max-w-2xl">
+  <div class="rounded-2xl bg-white p-8 shadow-xl dark:bg-slate-800">
+    <h2 class="mb-2 text-3xl font-bold text-slate-900 dark:text-white">Get in Touch</h2>
+    <p class="mb-6 text-slate-600 dark:text-slate-400">
+      Fill out the form below and we'll get back to you as soon as possible.
+    </p>
+
+    <form id="contact-form" class="space-y-6" novalidate>
+      <!-- Name Field -->
+      <div>
+        <label for="name" class="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300">
+          Full Name <span class="text-red-500">*</span>
+        </label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          required
+          minlength="2"
+          maxlength="100"
+          class="w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-900 transition-colors focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 dark:border-slate-600 dark:bg-slate-700 dark:text-white"
+          placeholder="John Doe"
+        />
+        <p class="mt-1 hidden text-sm text-red-600 dark:text-red-400" data-error="name">
+          Please enter your full name (2-100 characters)
+        </p>
+      </div>
+
+      <!-- Email Field -->
+      <div>
+        <label
+          for="email"
+          class="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300"
+        >
+          Email Address <span class="text-red-500">*</span>
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          class="w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-900 transition-colors focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 dark:border-slate-600 dark:bg-slate-700 dark:text-white"
+          placeholder="john@example.com"
+        />
+        <p class="mt-1 hidden text-sm text-red-600 dark:text-red-400" data-error="email">
+          Please enter a valid email address
+        </p>
+      </div>
+
+      <!-- Subject Field -->
+      <div>
+        <label
+          for="subject"
+          class="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300"
+        >
+          Subject <span class="text-red-500">*</span>
+        </label>
+        <input
+          type="text"
+          id="subject"
+          name="subject"
+          required
+          minlength="5"
+          maxlength="200"
+          class="w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-900 transition-colors focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 dark:border-slate-600 dark:bg-slate-700 dark:text-white"
+          placeholder="How can we help you?"
+        />
+        <p class="mt-1 hidden text-sm text-red-600 dark:text-red-400" data-error="subject">
+          Please enter a subject (5-200 characters)
+        </p>
+      </div>
+
+      <!-- Message Field -->
+      <div>
+        <label
+          for="message"
+          class="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300"
+        >
+          Message <span class="text-red-500">*</span>
+        </label>
+        <textarea
+          id="message"
+          name="message"
+          required
+          minlength="10"
+          maxlength="1000"
+          rows="6"
+          class="w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-900 transition-colors focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 dark:border-slate-600 dark:bg-slate-700 dark:text-white"
+          placeholder="Tell us more about your project..."></textarea>
+        <p class="mt-1 hidden text-sm text-red-600 dark:text-red-400" data-error="message">
+          Please enter a message (10-1000 characters)
+        </p>
+      </div>
+
+      <!-- Submit Button -->
+      <div>
+        <button
+          type="submit"
+          class="w-full rounded-lg bg-indigo-600 px-6 py-3 font-medium text-white transition-colors hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+        >
+          Send Message
+        </button>
+      </div>
+
+      <!-- Success Message -->
+      <div id="success-message" class="hidden rounded-lg bg-green-50 p-4 dark:bg-green-900/20">
+        <div class="flex items-start">
+          <svg
+            class="mt-0.5 h-5 w-5 text-green-600 dark:text-green-400"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <div class="ml-3">
+            <h3 class="text-sm font-medium text-green-800 dark:text-green-200">
+              Message sent successfully!
+            </h3>
+            <p class="mt-1 text-sm text-green-700 dark:text-green-300">
+              Thank you for contacting us. We'll get back to you soon.
+            </p>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const successMessage = document.getElementById('success-message') as HTMLElement;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Clear previous errors
+    document.querySelectorAll('[data-error]').forEach((el) => {
+      el.classList.add('hidden');
+    });
+
+    // Validate all fields
+    let isValid = true;
+
+    const name = form.elements.namedItem('name') as HTMLInputElement;
+    const email = form.elements.namedItem('email') as HTMLInputElement;
+    const subject = form.elements.namedItem('subject') as HTMLInputElement;
+    const message = form.elements.namedItem('message') as HTMLTextAreaElement;
+
+    // Name validation
+    if (!name.value.trim() || name.value.length < 2 || name.value.length > 100) {
+      showError('name');
+      isValid = false;
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email.value.trim() || !emailRegex.test(email.value)) {
+      showError('email');
+      isValid = false;
+    }
+
+    // Subject validation
+    if (!subject.value.trim() || subject.value.length < 5 || subject.value.length > 200) {
+      showError('subject');
+      isValid = false;
+    }
+
+    // Message validation
+    if (!message.value.trim() || message.value.length < 10 || message.value.length > 1000) {
+      showError('message');
+      isValid = false;
+    }
+
+    if (!isValid) {
+      return;
+    }
+
+    // Simulate form submission
+    const button = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    button.disabled = true;
+    button.textContent = 'Sending...';
+
+    // Simulate API call
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    // Show success message
+    successMessage.classList.remove('hidden');
+    form.reset();
+    button.disabled = false;
+    button.textContent = 'Send Message';
+
+    // Hide success message after 5 seconds
+    setTimeout(() => {
+      successMessage.classList.add('hidden');
+    }, 5000);
+  });
+
+  function showError(fieldName: string) {
+    const errorEl = document.querySelector(`[data-error="${fieldName}"]`);
+    if (errorEl) {
+      errorEl.classList.remove('hidden');
+    }
+  }
+
+  // Real-time validation
+  ['name', 'email', 'subject', 'message'].forEach((fieldName) => {
+    const field = form.elements.namedItem(fieldName) as HTMLInputElement | HTMLTextAreaElement;
+    field?.addEventListener('blur', () => {
+      const errorEl = document.querySelector(`[data-error="${fieldName}"]`);
+      if (field.validity.valid && field.value.trim()) {
+        errorEl?.classList.add('hidden');
+      }
+    });
+  });
+</script>
