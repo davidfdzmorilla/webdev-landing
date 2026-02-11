@@ -1,0 +1,120 @@
+---
+
+---
+
+<div class="mx-auto max-w-2xl text-center">
+  <h2 class="mb-4 text-4xl font-bold text-slate-900 dark:text-white">
+    Subscribe to Our Newsletter
+  </h2>
+  <p class="mb-8 text-lg text-slate-600 dark:text-slate-400">
+    Get the latest updates, tips, and exclusive content delivered straight to your inbox.
+  </p>
+
+  <div class="mx-auto max-w-md">
+    <form id="newsletter-form" class="space-y-4" novalidate>
+      <div>
+        <input
+          type="email"
+          id="newsletter-email"
+          name="email"
+          required
+          class="w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-900 transition-colors focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 dark:border-slate-600 dark:bg-slate-700 dark:text-white"
+          placeholder="Enter your email address"
+        />
+        <p class="mt-2 hidden text-sm text-red-600 dark:text-red-400" id="email-error">
+          Please enter a valid email address
+        </p>
+      </div>
+
+      <button
+        type="submit"
+        class="w-full rounded-lg bg-indigo-600 px-6 py-3 font-medium text-white transition-colors hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+      >
+        Subscribe Now
+      </button>
+
+      <p class="text-sm text-slate-500 dark:text-slate-400">
+        We respect your privacy. Unsubscribe at any time.
+      </p>
+
+      <!-- Success Message -->
+      <div id="newsletter-success" class="hidden rounded-lg bg-green-50 p-4 dark:bg-green-900/20">
+        <div class="flex items-start">
+          <svg
+            class="mt-0.5 h-5 w-5 text-green-600 dark:text-green-400"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <div class="ml-3">
+            <h3 class="text-sm font-medium text-green-800 dark:text-green-200">
+              Successfully subscribed!
+            </h3>
+            <p class="mt-1 text-sm text-green-700 dark:text-green-300">
+              Check your inbox for a confirmation email.
+            </p>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById('newsletter-form') as HTMLFormElement;
+  const emailInput = document.getElementById('newsletter-email') as HTMLInputElement;
+  const emailError = document.getElementById('email-error') as HTMLElement;
+  const successMessage = document.getElementById('newsletter-success') as HTMLElement;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Clear previous errors
+    emailError.classList.add('hidden');
+
+    // Validate email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailInput.value.trim() || !emailRegex.test(emailInput.value)) {
+      emailError.classList.remove('hidden');
+      return;
+    }
+
+    // Simulate API call
+    const button = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    button.disabled = true;
+    button.textContent = 'Subscribing...';
+
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    // Show success message
+    successMessage.classList.remove('hidden');
+    form.querySelector('.space-y-4 > div')?.classList.add('hidden');
+    form.querySelector('button')?.classList.add('hidden');
+    form.querySelector('p.text-sm')?.classList.add('hidden');
+
+    // Reset after 5 seconds
+    setTimeout(() => {
+      successMessage.classList.add('hidden');
+      form.querySelector('.space-y-4 > div')?.classList.remove('hidden');
+      form.querySelector('button')?.classList.remove('hidden');
+      form.querySelector('p.text-sm')?.classList.remove('hidden');
+      emailInput.value = '';
+      button.disabled = false;
+      button.textContent = 'Subscribe Now';
+    }, 5000);
+  });
+
+  // Real-time validation
+  emailInput.addEventListener('blur', () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (emailInput.value.trim() && emailRegex.test(emailInput.value)) {
+      emailError.classList.add('hidden');
+    }
+  });
+</script>
