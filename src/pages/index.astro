@@ -1,17 +1,91 @@
 ---
-
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
-  </head>
-  <body>
-    <h1>Astro</h1>
-  </body>
-</html>
+<BaseLayout
+  title="WebDev Landing - Modern Landing Page"
+  description="Professional landing page with interactive forms, validation, and modern design"
+>
+  <Header />
+
+  <!-- Hero Section -->
+  <section
+    class="relative overflow-hidden bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 py-24"
+  >
+    <div class="container mx-auto px-4">
+      <div class="mx-auto max-w-4xl text-center">
+        <h1 class="mb-6 text-5xl font-bold text-white md:text-6xl lg:text-7xl">
+          Build Amazing Landing Pages
+        </h1>
+        <p class="mb-8 text-xl text-indigo-100 md:text-2xl">
+          Professional, responsive, and conversion-focused landing pages with modern design and
+          interactive forms.
+        </p>
+        <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <a
+            href="#contact"
+            class="inline-flex items-center rounded-lg bg-white px-8 py-4 text-lg font-medium text-indigo-600 transition-all hover:scale-105 hover:shadow-lg"
+          >
+            Get Started
+          </a>
+          <a
+            href="#features"
+            class="inline-flex items-center rounded-lg border-2 border-white px-8 py-4 text-lg font-medium text-white transition-all hover:bg-white/10"
+          >
+            Learn More
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Decorative background elements -->
+    <div class="absolute left-0 top-0 -z-10 h-full w-full overflow-hidden opacity-20">
+      <div class="absolute -left-32 -top-32 h-64 w-64 rounded-full bg-white blur-3xl"></div>
+      <div class="absolute -right-32 top-64 h-96 w-96 rounded-full bg-white blur-3xl"></div>
+    </div>
+  </section>
+
+  <!-- Features Placeholder -->
+  <section id="features" class="bg-slate-50 py-24 dark:bg-slate-800">
+    <div class="container mx-auto px-4">
+      <div class="mx-auto max-w-3xl text-center">
+        <h2 class="mb-4 text-4xl font-bold text-slate-900 dark:text-white">Features Coming Soon</h2>
+        <p class="text-lg text-slate-600 dark:text-slate-400">
+          Interactive features section will be added in the next milestone.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Placeholder -->
+  <section id="contact" class="py-24">
+    <div class="container mx-auto px-4">
+      <div class="mx-auto max-w-3xl text-center">
+        <h2 class="mb-4 text-4xl font-bold text-slate-900 dark:text-white">
+          Contact Form Coming Soon
+        </h2>
+        <p class="text-lg text-slate-600 dark:text-slate-400">
+          Interactive contact form with validation will be added in the next milestone.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Placeholder -->
+  <section id="newsletter" class="bg-slate-50 py-24 dark:bg-slate-800">
+    <div class="container mx-auto px-4">
+      <div class="mx-auto max-w-3xl text-center">
+        <h2 class="mb-4 text-4xl font-bold text-slate-900 dark:text-white">
+          Newsletter Coming Soon
+        </h2>
+        <p class="text-lg text-slate-600 dark:text-slate-400">
+          Newsletter signup form will be added in the next milestone.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>
